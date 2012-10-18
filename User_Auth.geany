@@ -1,0 +1,33 @@
+
+[indentation]
+indent_width=4
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=false
+detect_indent_width=false
+indent_mode=2
+
+[project]
+name=User Auth
+base_path=/media/Progs_Music/Web Prog/my work/python/signin
+description=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=0
+FILE_NAME_0=1027;Python;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/signin/userengine/views.py;0;4
+FILE_NAME_1=4264;Python;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/signin/signin/settings.py;0;4
+FILE_NAME_2=308;Python;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/signin/userengine/models.py;0;4
+FILE_NAME_3=238;Python;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/signin/userengine/admin.py;0;4
+FILE_NAME_4=0;Python;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/dtut/polls/admin.py;0;4
+FILE_NAME_5=767;HTML;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/signin/userengine/templates/register.html;0;4
+FILE_NAME_6=487;HTML;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/signin/userengine/templates/signin.html;0;4
+FILE_NAME_7=0;Python;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/dtut/polls/views.py;0;4
+FILE_NAME_8=221;Python;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/signin/userengine/urls.py;0;4
+FILE_NAME_9=196;Python;0;16;1;1;0;/media/Progs_Music/Web Prog/my work/python/signin/signin/urls.py;0;4
+
+[VTE]
+last_dir=/home/rafael
