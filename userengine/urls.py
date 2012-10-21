@@ -1,9 +1,8 @@
 from django.conf.urls import patterns, url
-from userengine.views import start, signin, register, success, show_register
+from userengine.views import signin, register, success
 
 urlpatterns = patterns('',
-				url("^signin/$", signin),
-				url("^register/$", show_register),
-				url("^register_process/$", register),
+				url("^$", signin),
+				url("^register/$", register),				
 				url("^success/$", success),
 			)
