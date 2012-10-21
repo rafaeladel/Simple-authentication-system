@@ -4,16 +4,16 @@
 		<form action="/register_process/" method="post">
 			{% csrf_token %}
 			<label for="username">Username : </label>
-			<input type="text" name="username" placeholder="Username" id="username"/>
+			<input type="text" name="username" placeholder="Username" value="{{ username }}" id="username"/>
 			<br>
 			<label for="password">Password : </label>
-			<input type="password" name="password" placeholder="Password" id="password"/>
+			<input type="password" name="password" placeholder="Password" value="{{ password }}" id="password"/>
 			<br>
 			<label for="password_again">Password (again) : </label>
-			<input type="password" name="password_again" placeholder="Password" id="password_again"/>
+			<input type="password" name="password_again" placeholder="Password" value="{{ password_again }}" id="password_again"/>
 			<br>
 			<label for="email">Email : </label>
-			<input type="text" name="email" placeholder="Email" id="email"/>
+			<input type="text" name="email" placeholder="Email" value="{{ email}}" id="email"/>
 			<br>
 			{% if error_message %}<p>{{ error_message }}</p>{% endif %}
 			<input type="submit" value="Register"/>
