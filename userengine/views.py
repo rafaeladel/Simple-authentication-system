@@ -28,21 +28,48 @@ def signin(request):
 def show_register(request):
 	return render_to_response("register.html", context_instance=RequestContext(request))
 
-
+def getBack(request, username="", password="", password_again="", email="", error=""):
+	return render_to_response("register.html", {
+								"username":username,
+								"password":password,
+								"password_again":password_again,
+								"email":email,
+								"error_message":error
+								},context_instance=RequestContext(request))
 
 def register(request):
 	if not validate(request.POST["username"]):
-		return render_to_response("register.html", {"error_message": "Invalid username."}, context_instance=RequestContext(request))
+		return getBack(request, 
+						username=request.POST["username"], 
+						password=request.POST["password"],
+						password_again=request.POST["password_again"],
+						email=request.POST["email"],
+						error="Invalid username.")		
 	
 	if not validate(request.POST["password"]):
-		return render_to_response("register.html", {"error_message": "Invalid password."}, context_instance=RequestContext(request))
+		return getBack(request, 
+						username=request.POST["username"], 
+						password=request.POST["password"],
+						password_again=request.POST["password_again"],
+						email=request.POST["email"],
+						error="Invalid password.")		
 		
 	if request.POST["password"] != request.POST["password_again"]:
-		return render_to_response("register.html", {"error_message":"Password confirmation didn't match!"}, context_instance=RequestContext(request))
+		return getBack(request, 
+						username=request.POST["username"], 
+						password=request.POST["password"],
+						password_again=request.POST["password_again"],
+						email=request.POST["email"],
+						error="Password confirmation didn't match!")		
 	
 	exists = users.objects.filter(username__exact= request.POST["username"])
 	if exists:
-		return render_to_response("register.html", {"error_message": "User already exists"}, context_instance=RequestContext(request))
+		return getBack(request, 
+						username=request.POST["username"], 
+						password=request.POST["password"],
+						password_again=request.POST["password_again"],
+						email=request.POST["email"],
+						error="User already exists")		
 	else:		
 		password = hashlib.sha256(request.POST["password"]).hexdigest()
 		new_user = users(username = request.POST["username"],
