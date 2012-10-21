@@ -28,48 +28,28 @@ def signin(request):
 def show_register(request):
 	return render_to_response("register.html", context_instance=RequestContext(request))
 
-def getBack(request, username="", password="", password_again="", email="", error=""):
+def getBack(request, error_message=""):
 	return render_to_response("register.html", {
-								"username":username,
-								"password":password,
-								"password_again":password_again,
-								"email":email,
-								"error_message":error
+								"username":request.POST.get("username",""),
+								"password":request.POST.get("password",""),
+								"password_again":request.POST.get("password_again",""),
+								"email":request.POST.get("email",""),
+								"error_message":error_message
 								},context_instance=RequestContext(request))
 
 def register(request):
 	if not validate(request.POST["username"]):
-		return getBack(request, 
-						username=request.POST["username"], 
-						password=request.POST["password"],
-						password_again=request.POST["password_again"],
-						email=request.POST["email"],
-						error="Invalid username.")		
+		return getBack(request, error_message = "Invalid username.")		
 	
 	if not validate(request.POST["password"]):
-		return getBack(request, 
-						username=request.POST["username"], 
-						password=request.POST["password"],
-						password_again=request.POST["password_again"],
-						email=request.POST["email"],
-						error="Invalid password.")		
+		return getBack(request, error_message = "Invalid password.")		
 		
 	if request.POST["password"] != request.POST["password_again"]:
-		return getBack(request, 
-						username=request.POST["username"], 
-						password=request.POST["password"],
-						password_again=request.POST["password_again"],
-						email=request.POST["email"],
-						error="Password confirmation didn't match!")		
+		return getBack(request, error_message = "Password confirmation didn't match!")		
 	
 	exists = users.objects.filter(username__exact= request.POST["username"])
 	if exists:
-		return getBack(request, 
-						username=request.POST["username"], 
-						password=request.POST["password"],
-						password_again=request.POST["password_again"],
-						email=request.POST["email"],
-						error="User already exists")		
+		return getBack(request, error_message = "User already exists")		
 	else:		
 		password = hashlib.sha256(request.POST["password"]).hexdigest()
 		new_user = users(username = request.POST["username"],
